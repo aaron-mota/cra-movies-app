@@ -3,7 +3,12 @@ import "./App.css"
 
 import axios from 'axios'
 import { useEffect, useState } from "react";
+import { getDocs } from "./services/index.js";
+import { Skeleton } from "@mui/material";
+
 axios.defaults.baseURL = process.env.BACKENDURL || "http://localhost:4000"
+
+
 
 function App() {
 
@@ -11,22 +16,21 @@ function App() {
   const [response, setResponse] = useState("")
 
   useEffect(() => {
-    const ourRequest = axios.CancelToken.source()
-    async function getRequest() {
+    const controller = new AbortController()
+    async function fetchDocs() {
+      setIsFetching(true)
       try {
-        setIsFetching(true)
-        const response = await axios.get(`/examples/hello`, {cancelToken: ourRequest.token}) // clean-up set as second get argument (3rd if it was post request)
-        console.log("retrievededReq (req): ", response.data)
-        setResponse(response.data)
+        const docs = await getDocs(controller, true)
+        setResponse(docs)
       } catch(e) {
         console.log("There was a problem or the request was cancelled.", e)
       } finally {
         setIsFetching(false)
       }
     }
-    getRequest()
+    fetchDocs()
     return () => {
-      ourRequest.cancel()
+      controller.abort()
     }
   }, [])
 
@@ -34,7 +38,8 @@ function App() {
   return (
     <SiteContainer>
       Hello
-      {response}
+
+      {isFetching ? <Skeleton width={210} height={118} /> : <div>{response}</div>}
 
       {/* TODO:  HTTP CLIENT / SERVICES (accessing API -- fetch/axios) */}
       {/* TODO (OPTIONAL):  BACKEND (NODEJS) / DB (?) */}

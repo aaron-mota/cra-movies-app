@@ -5,7 +5,7 @@ const api = require("./api")
 router.use('/api', api)
 
 // NON-API
-router.use('/examples', require("./examples"))
+router.use('/docs', require("./docs"))
 
 
 

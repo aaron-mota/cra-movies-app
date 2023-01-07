@@ -1,0 +1,3 @@
+export {
+  getDocs,
+} from "./fetch"
