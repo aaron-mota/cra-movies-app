@@ -1,8 +1,8 @@
 import React from 'react'
 import { useEffect, useState } from "react";
-import { getDocs } from "../../services";
+import { getDocs } from "../services";
 import { Skeleton, Stack, Typography } from "@mui/material";
-import { colors } from "../../utils/variables";
+import { colors } from "../utils/variables";
 
 export function Users() {
   const [isFetching, setIsFetching] = useState(false)
