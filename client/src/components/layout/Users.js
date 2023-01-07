@@ -4,7 +4,7 @@ import { getDocs } from "../../services";
 import { Skeleton, Stack, Typography } from "@mui/material";
 import { colors } from "../../utils/variables";
 
-export default function Users() {
+export function Users() {
   const [isFetching, setIsFetching] = useState(false)
   const [docs, setDocs] = useState([])
 
