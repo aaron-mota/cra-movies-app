@@ -1,9 +1,11 @@
 const router = require("express").Router()
+const docs = require("../_mock/db_docs.json")
 
 
 router.get('/', (req, res) => {
-  res.send('Hello From DOCS');
+  res.send(docs);
 });
+
 router.post('/', (req, res) => {
   console.log(req.body);
   res.send(

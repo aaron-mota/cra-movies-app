@@ -1,0 +1,71 @@
+[{
+  "id": 1,
+  "first_name": "Sam",
+  "last_name": "Baszniak",
+  "email": "sbaszniak0@php.net",
+  "gender": "Female",
+  "ip_address": "109.159.82.185"
+}, {
+  "id": 2,
+  "first_name": "Gal",
+  "last_name": "Gladeche",
+  "email": "ggladeche1@slashdot.org",
+  "gender": "Male",
+  "ip_address": "219.53.85.181"
+}, {
+  "id": 3,
+  "first_name": "Karim",
+  "last_name": "Yorkston",
+  "email": "kyorkston2@washington.edu",
+  "gender": "Male",
+  "ip_address": "160.201.92.219"
+}, {
+  "id": 4,
+  "first_name": "Dacey",
+  "last_name": "Freyne",
+  "email": "dfreyne3@uol.com.br",
+  "gender": "Female",
+  "ip_address": "53.185.198.50"
+}, {
+  "id": 5,
+  "first_name": "Reeta",
+  "last_name": "Croley",
+  "email": "rcroley4@si.edu",
+  "gender": "Female",
+  "ip_address": "8.204.220.148"
+}, {
+  "id": 6,
+  "first_name": "Kearney",
+  "last_name": "Nevison",
+  "email": "knevison5@google.com.au",
+  "gender": "Male",
+  "ip_address": "33.65.189.94"
+}, {
+  "id": 7,
+  "first_name": "Gabe",
+  "last_name": "Di Biasi",
+  "email": "gdibiasi6@acquirethisname.com",
+  "gender": "Male",
+  "ip_address": "195.121.68.123"
+}, {
+  "id": 8,
+  "first_name": "Lolita",
+  "last_name": "Schwanden",
+  "email": "lschwanden7@reuters.com",
+  "gender": "Polygender",
+  "ip_address": "144.153.191.240"
+}, {
+  "id": 9,
+  "first_name": "Karlie",
+  "last_name": "Johnson",
+  "email": "kjohnson8@about.me",
+  "gender": "Polygender",
+  "ip_address": "255.88.62.124"
+}, {
+  "id": 10,
+  "first_name": "Therese",
+  "last_name": "Grant",
+  "email": "tgrant9@e-recht24.de",
+  "gender": "Genderqueer",
+  "ip_address": "101.55.219.112"
+}]
