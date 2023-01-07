@@ -2,9 +2,10 @@ import "./App.css"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import axios from 'axios'
 import SiteContainer from "./components/layout/SiteContainer";
-import NotFound from "./pages/NotFound";
-import Home from "./pages/Home";
-import Users from "./pages/Users";
+import NotFound from "./pages/_error/NotFound";
+import Home from "./pages/home/Home";
+import Users from "./pages/users/Users";
+import User from "./pages/users/User";
 axios.defaults.baseURL = process.env.BACKENDURL || "http://localhost:4000"
 
 
@@ -16,8 +17,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/users" element={<Users />} />
+          <Route path="/users/:id" element={<User />} />
 
-          {/* 404 */}<Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} /> {/* 404 */}
         </Routes>
       </SiteContainer>
     </BrowserRouter>

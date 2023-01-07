@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 import React from 'react'
-import { Users as UsersComponent } from '../components/Users'
+import { Users as UsersComponent } from '../../components/Users'
 
 export default function Users() {
   return (

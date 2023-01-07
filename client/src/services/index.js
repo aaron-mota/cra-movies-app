@@ -1,3 +1,6 @@
 export {
   getDocs,
-} from "./fetch"
+  getDoc,
+  updateDoc
+// } from "./fetch"
+} from "./axios"
