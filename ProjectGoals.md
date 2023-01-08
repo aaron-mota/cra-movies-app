@@ -16,3 +16,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Minimal-To-No Concern Given To
 
 - UI/UX
+
+## How To
+
+- To swap backends (databases and "routing/database handlers"), uncomment desired backend within `/server/router/index.js`
+  - Currently available:
+    - **REST API**
+      - Mock database (local JSON file)
+      - MongoDb
+      - Prisma (wrapping MongoDb)
+    
+  - `#TODO`
+    - **tRPC API**
+      - tRPC / Prisma+tRPC (likely larger change)
+    - **TypeScript conversions (all options, or at least Prisma options)**

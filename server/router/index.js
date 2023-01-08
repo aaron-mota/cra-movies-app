@@ -9,7 +9,7 @@ router.use('/api', api)
 //////////////
 // Uncomment different router sets to swap databases
 
-// MOCKLOCAL "MOCK DB"
+// MOCK DB (LOCAL JSON FILE) (generated via Mockaroo)
 // router.use('/docs', require("./mock/docs"))
 
 // MONGODB
