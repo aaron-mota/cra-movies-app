@@ -1,5 +1,6 @@
 
 import React, { useState } from "react"
+import { useNavigate, useLocation} from "react-router-dom"
 import { Stack, AppBar, Toolbar, Button, Link } from "@mui/material"
 
 
@@ -7,6 +8,10 @@ import { Stack, AppBar, Toolbar, Button, Link } from "@mui/material"
 export default function SiteTopNav({
   drawerWidth = 0
 }) {
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const px = 12
   const buttonOpacity = 0.8
   const buttonsMain = [
@@ -24,7 +29,7 @@ export default function SiteTopNav({
 
   // const router = useRouter()
   // const [url, setUrl] = useState(router.pathname || "")
-  const [url, setUrl] = useState("")
+  const [url, setUrl] = useState(location.pathname)
 
 
 
@@ -34,11 +39,11 @@ export default function SiteTopNav({
       elevation={0}
 
       sx={{
-        backgroundColor: "transparent",
+        // backgroundColor: "transparent",
+        backgroundColor: "primary.main",
         color: "#fff",
-        paddingTop: {xs: 1, sm: 1.5, md: 4},
-        paddingBottom: {xs: 1, sm: 1.5, md: 2},
-        px: {xs: (px * 0.2), sm: (px * 0.4), md: px},
+        // paddingTop: {xs: 1, sm: 1.5, md: 4},
+        // paddingBottom: {xs: 1, sm: 1.5, md: 2},
         width: {
           // md: `calc(100% - ${width}px)`
         },
@@ -47,7 +52,6 @@ export default function SiteTopNav({
           paddingLeft: 0,
           paddingRight: 0
         },
-
         '& .MuiButton-root': {
           borderRadius: "400px",
         },
@@ -71,16 +75,18 @@ export default function SiteTopNav({
 
         <Stack direction="row" gap={2} display={"block"}>
             {buttonsMain.map(({label, href}) => (
-              <Link key={`key-${label}`} to={href}>
-                <Button size="large" color="inherit"
-                  href={href}
-                  sx={{
+              <Button
+                key={`key=${href}`}
+                size="large"
+                // color="inherit"
+                onClick={() => {setUrl(href); navigate(href)}}
+                sx={{
                   opacity: (url == href) ? 1 : buttonOpacity,
-                  // fontWeight: (url == bookmark) && 600,
-                }}>
-                    {label}
-                </Button>
-              </Link>
+                  color: "#ffffff"
+                // fontWeight: (url == bookmark) && 600,
+              }}>
+                  {label}
+              </Button>
             ))}
         </Stack>
 

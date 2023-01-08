@@ -1,6 +1,9 @@
 export {
-  getDocs,
+  createDoc,
   getDoc,
-  updateDoc
+  updateDoc,
+  deleteDoc,
+
+  getDocs,
 // } from "./fetch"
 } from "./axios"

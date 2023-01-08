@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material'
+import { Stack, Toolbar } from '@mui/material'
 import SiteDrawer from './SiteDrawer'
 import SiteTopNav from './SiteTopNav'
 
@@ -20,7 +20,7 @@ export default function SiteContainer({
       }}
     >
       {/* APP BAR */}
-      {/* <SiteTopNav drawerWidth={drawerWidth} /> */}
+      <SiteTopNav drawerWidth={drawerWidth} />
 
       {/* SIDE DRAWER */}
       {/* <SiteDrawer width={drawerWidth} /> */}
@@ -36,7 +36,7 @@ export default function SiteContainer({
           // overflowX: "auto",
         }}
       >
-        {/* <Toolbar /> */} {/* for topnav spacing */}
+        <Toolbar /> {/* for topnav spacing */}
         {children}        
       </Stack>
     </Stack>

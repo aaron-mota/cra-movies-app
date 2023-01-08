@@ -1,11 +1,10 @@
 const router = require("express").Router()
-const docs = require("../db/db_docs.json")
+let docs = require("../db/db_docs.json")
 
 // HANDLER FUNCTIONS
-const updateSingle = (doc) => {
-  // UPDATE DOC IN DB
-  const index = docs.findIndex(d => d.id === doc.id)
-  docs[index] = doc
+const createSingle = (doc) => {
+  // CREATE DOC IN DB
+  docs = docs.unshift(doc)
   // RETURN DOC
   return doc
 } 
@@ -15,27 +14,61 @@ const getSingle = (id) => {
   // RETURN DOC
   return doc
 } 
+const updateSingle = (doc) => {
+  // UPDATE DOC IN DB
+  const index = docs.findIndex(d => d.id === doc.id)
+  docs[index] = doc
+  // RETURN DOC
+  return doc
+} 
+const deleteSingle = (id) => {
+  // DELETE DOC FROM DB
+  docs = docs.filter(d => d.id !== +id)
+  // RETURN DOC
+  return true
+} 
 
 
 
-// GET ALL
-router.get('/', (req, res) => {
-  res.send(docs);
-});
+/////////////////
+// SINGLE
+/////////////////
+// CREATE
+router.post('/', async (req, res) => {
+  // const id = req.params.id
+  const doc = req.body.doc
+  const createdDoc = await createSingle(doc) // nothing to truly await here with in-app mock data
+  res.send(createdDoc)
+})
 
-// GET SINGLE (BY ID)
+// READ (BY ID)
 router.get('/:id', async (req, res) => {
   const doc = await getSingle(req.params.id) // nothing to truly await here with in-app mock data
   res.send(doc);
 });
 
-// UPDATE SINGLE [PUT]
+// UPDATE [PUT]
 router.put('/:id', async (req, res) => {
   // const id = req.params.id
   const doc = req.body.doc
   const updatedDoc = await updateSingle(doc) // nothing to truly await here with in-app mock data
   res.send(updatedDoc)
 })
+
+// DELETE
+router.delete('/:id', async (req, res) => {
+  // const id = req.params.id
+  const bool = await deleteSingle(req.params.id) // nothing to truly await here with in-app mock data
+  res.send(bool)
+})
+
+/////////////////
+// MANY
+/////////////////
+// GET ALL
+router.get('/', (req, res) => {
+  res.send(docs);
+});
 
 
 
