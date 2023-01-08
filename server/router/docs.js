@@ -53,6 +53,7 @@ router.get('/:id', async (req, res) => {
 
 // UPDATE [PUT]
 router.put('/:id', async (req, res) => {
+  console.log("UPDATE:", req.body)
   const doc = req.body.doc
   const updatedDoc = await updateSingle(doc) // nothing to truly await here with in-app mock data
   res.send(updatedDoc)
