@@ -10,7 +10,10 @@ import axios from "axios"
 // MAIN
 ///////////////////
 
-// CREATE SINGLE
+// SINGLE
+///////////////////
+
+// CREATE
 export const createDoc = async (doc, controller, consoleLog = false) => {
   const response = await axios.post(`/docs`, {doc: doc}, {signal: controller.signal})
   if (consoleLog) {
@@ -19,7 +22,7 @@ export const createDoc = async (doc, controller, consoleLog = false) => {
   return response.data
 }
 
-// GET SINGLE
+// READ
 export const getDoc = async (id, controller, consoleLog = false) => {
   const response = await axios.get(`/docs/${id}`, {signal: controller.signal})
   if (consoleLog) {
@@ -28,7 +31,7 @@ export const getDoc = async (id, controller, consoleLog = false) => {
   return response.data
 }
 
-// UPDATE SINGLE
+// UPDATE
 export const updateDoc = async (doc, controller, consoleLog = false) => {
   const response = await axios.put(`/docs/${doc.id}`, {doc: doc}, {signal: controller.signal})
   if (consoleLog) {
@@ -37,7 +40,7 @@ export const updateDoc = async (doc, controller, consoleLog = false) => {
   return response.data
 }
 
-// DELETE SINGLE
+// DELETE
 export const deleteDoc = async (id, controller, consoleLog = false) => {
   const response = await axios.delete(`/docs/${id}`, {signal: controller.signal})
   if (consoleLog) {
@@ -46,6 +49,9 @@ export const deleteDoc = async (id, controller, consoleLog = false) => {
   return response.data
 }
 
+
+// MANY
+///////////////////
 
 // GET MANY
 export const getDocs = async (controller, consoleLog = false) => {

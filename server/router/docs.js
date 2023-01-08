@@ -1,38 +1,42 @@
 const router = require("express").Router()
-let docs = require("../db/db_docs.json")
+let docs = require("../db/docs.json")
+const { v4: uuidv4 } = require('uuid');
 
+/////////////////
 // HANDLER FUNCTIONS
+/////////////////
 const createSingle = (doc) => {
   // CREATE DOC IN DB
-  docs = docs.unshift(doc)
+  doc.id = uuidv4()
+  docs.unshift(doc)
   // RETURN DOC
   return doc
 } 
 const getSingle = (id) => {
   // GET DOC FROM DB
-  const doc = docs.find(d => d.id === +id)
+  const doc = docs.find(d => `${d.id}` === `${id}`)
   // RETURN DOC
   return doc
 } 
 const updateSingle = (doc) => {
   // UPDATE DOC IN DB
-  const index = docs.findIndex(d => d.id === doc.id)
+  const index = docs.findIndex(d => `${d.id}` === `${doc.id}`)
   docs[index] = doc
   // RETURN DOC
   return doc
 } 
 const deleteSingle = (id) => {
   // DELETE DOC FROM DB
-  docs = docs.filter(d => d.id !== +id)
+  docs = docs.filter(d => `${d.id}` !== `${id}`)
   // RETURN DOC
   return true
 } 
 
 
-
 /////////////////
 // SINGLE
 /////////////////
+
 // CREATE
 router.post('/', async (req, res) => {
   // const id = req.params.id
@@ -49,7 +53,6 @@ router.get('/:id', async (req, res) => {
 
 // UPDATE [PUT]
 router.put('/:id', async (req, res) => {
-  // const id = req.params.id
   const doc = req.body.doc
   const updatedDoc = await updateSingle(doc) // nothing to truly await here with in-app mock data
   res.send(updatedDoc)
@@ -57,28 +60,20 @@ router.put('/:id', async (req, res) => {
 
 // DELETE
 router.delete('/:id', async (req, res) => {
-  // const id = req.params.id
   const bool = await deleteSingle(req.params.id) // nothing to truly await here with in-app mock data
   res.send(bool)
 })
 
+
 /////////////////
 // MANY
 /////////////////
-// GET ALL
+
+// READ (ALL)
 router.get('/', (req, res) => {
   res.send(docs);
 });
 
-
-
-// NOT YET USED
-// router.post('/', (req, res) => {
-//   console.log(req.body);
-//   res.send(
-//     `I received your POST request. This is what you sent me: ${req.body.post}`,
-//   );
-// });
 
 
 

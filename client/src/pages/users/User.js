@@ -42,7 +42,7 @@ export default function User() {
 
   // DELETE DOC
   function handleDelete() {
-    if (window.confirm("Are you sure you want to delete this note?")) {
+    if (window.confirm("Are you sure you want to delete this?")) {
       setDeleteDocRequestCount(prev => prev + 1)
     }
   }
@@ -77,17 +77,20 @@ export default function User() {
 
   return (
     <>
-      <LinkWrapped to={"/users"} sx={{mb: 2}}>
-        &lt; Go to Users
-      </LinkWrapped>
+      <div>
+        <Button onClick={() => navigate(-1)}>
+          &lt; Back
+        </Button>
+      </div>
 
       {(!isFetching && !doc?.first_name) ? "User not found.  Please try again." : 
         <>
-          <Typography variant="h4" component="h1" sx={{mb: 2}}>{doc.first_name} {doc.last_name}</Typography>
-
-          <Stack direction="row" gap={2}>
-            <Button onClick={() => setUpdateModalOpen(true)}>Edit</Button>
-            <Button onClick={handleDelete}>Delete</Button>
+          <Stack direction="row" gap={2} alignItems="center" sx={{mb: 2}}>
+            <Typography variant="h4" component="h1">{doc.first_name} {doc.last_name}</Typography>
+            <Stack direction="row" gap={2}>
+              <Button variant="contained" onClick={() => setUpdateModalOpen(true)}>Edit</Button>
+              <Button variant="contained" onClick={handleDelete}>Delete</Button>
+            </Stack>
           </Stack>
 
           <Stack
