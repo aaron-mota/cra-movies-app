@@ -22,7 +22,7 @@ export default function ModalUpdateUser({
   }
 
   
-  // UPDATE MODAL
+  // UPDATE DOC
   useEffect(() => {
     if (updateDocRequestCount === 0) {return}
     else {

@@ -1,36 +1,29 @@
 
 import React, { useState } from "react"
 import { useNavigate, useLocation} from "react-router-dom"
-import { Stack, AppBar, Toolbar, Button, Link } from "@mui/material"
+import { Stack, AppBar, Toolbar, Button } from "@mui/material"
 
 
 
 export default function SiteTopNav({
-  drawerWidth = 0
 }) {
 
   const navigate = useNavigate()
   const location = useLocation()
 
-  const px = 12
+  const [url, setUrl] = useState(location.pathname)
+
   const buttonOpacity = 0.8
   const buttonsMain = [
     {
       label: "home",
       href: "/",
-      // bookmark: "",
     },
     {
       label: "users",
       href: "/users",
-      // bookmark: "#users",
     },
   ]
-
-  // const router = useRouter()
-  // const [url, setUrl] = useState(router.pathname || "")
-  const [url, setUrl] = useState(location.pathname)
-
 
 
   return (

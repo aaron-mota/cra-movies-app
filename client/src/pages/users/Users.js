@@ -1,6 +1,6 @@
 import { Button, Stack, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import { Users as UsersComponent } from '../../components/Users'
+import { UsersList } from './components/UsersList'
 import ModalCreateUser from './components/ModalCreateUser'
 
 export default function Users() {
@@ -20,7 +20,7 @@ export default function Users() {
         </Stack>
       </Stack>
 
-      <UsersComponent />
+      <UsersList />
 
       {createModalOpen && <ModalCreateUser open={createModalOpen} setOpen={setCreateModalOpen} />}
     </>

@@ -1,11 +1,11 @@
 import React from 'react'
 import { useEffect, useState } from "react";
-import { getDocs } from "../services";
+import { getDocs } from "../../../services";
 import { Skeleton, Stack, Typography } from "@mui/material";
-import { colors } from "../utils/constants";
+import { colors } from "../../../utils/constants";
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 
-export function Users() {
+export function UsersList() {
   const navigate = useNavigate()
 
   const [isFetching, setIsFetching] = useState(false)

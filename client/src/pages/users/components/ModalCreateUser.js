@@ -34,7 +34,7 @@ export default function ModalCreateUser({
 
 
   
-  // CREATE MODAL
+  // CREATE DOC
   useEffect(() => {
     if (createDocRequestCount === 0) {return}
     else {

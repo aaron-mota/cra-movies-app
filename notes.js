@@ -102,3 +102,59 @@
 
 
 
+// NOTE:  probably want client & server both within src folder ? (similar to NextJS? monorepo?)
+
+// root
+    // client
+        // public
+        // src
+            // components
+                // layout
+                    // SiteContainer.js
+                // utils
+                    // LinkWrapped.js
+            // pages
+                // home
+                // users
+                    // components
+                    // Users.js
+                    // User.js
+            // services
+                // axios.js
+                // fetch.js
+                // index.js
+            // utils
+                // constants.js
+                    // export const colors = {
+                    //  pink: "#ffc4ef",
+                    //  blue: "#c4ddff"
+                    // }
+
+            // App.css
+            // App.js
+            // index.js
+            // ...
+        
+        // .env
+            // BACKENDURL = http://localhost:4000
+        // .gitignore
+            // /node_modules
+            // .env
+        // package.json
+    // server
+        // db
+            // (db.json, mongodb.js, ...)
+        // prisma (auto-generated)
+        // router
+            // api
+            // (mock, mongodb, prisma, ...)
+            
+            // index.js            
+        // .env
+            // PORT=4000
+            // DATABASE_URL=mongodbUri
+        // .gitignore
+            // /node_modules
+            // .env
+        // package.json
+        // server.js

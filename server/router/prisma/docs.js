@@ -1,14 +1,8 @@
 // import {PrismaClient} from '@prisma/client'
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient
-
 const router = require("express").Router()
-const { v4: uuidv4 } = require('uuid');
-let docs = require("../../db/docs.json")
 
-const ObjectId = require('mongodb').ObjectId
-const db = require('../../db/mongodb')
-const usersCollection = db.collection("users")
 
 /////////////////
 // NOTES
