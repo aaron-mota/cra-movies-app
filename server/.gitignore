@@ -22,3 +22,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+git filter-branch --index-filter "git rm -rf --cached --ignore-unmatch .env" HEAD
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch application/.env' --prune-empty --tag-name-filter cat -- --all
