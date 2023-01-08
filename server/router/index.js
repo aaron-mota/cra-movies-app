@@ -7,12 +7,16 @@ router.use('/api', api)
 
 // NON-API
 //////////////
+// Uncomment different router sets to swap databases
 
-// LOCAL "MOCK DB"
+// MOCKLOCAL "MOCK DB"
 // router.use('/docs', require("./mock/docs"))
 
 // MONGODB
-router.use('/docs', require("./mongodb/docs"))
+// router.use('/docs', require("./mongodb/docs"))
+
+// PRISMA
+router.use('/docs', require("./prisma/docs"))
 
 
 

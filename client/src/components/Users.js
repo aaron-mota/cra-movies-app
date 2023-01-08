@@ -38,6 +38,7 @@ export function Users() {
       <Stack gap={1}>
         {docs.map(({id, first_name, last_name, email, gender, ...rest}) => 
           <Stack
+            key={id}
             onClick={() => navigate(`/users/${id}`)}
             sx={{
               backgroundColor: gender == "Female" ? colors.pink : colors.blue,
