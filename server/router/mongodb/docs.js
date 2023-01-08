@@ -1,35 +1,61 @@
 const router = require("express").Router()
-let docs = require("../db/docs.json")
 const { v4: uuidv4 } = require('uuid');
+let docs = require("../../db/docs.json")
+
+const ObjectId = require('mongodb').ObjectId
+const db = require('../../db/mongodb')
+const usersCollection = db.collection("users")
+
+/////////////////
+// NOTES
+/////////////////
+
+// using "id" for FE rendering, so need to create it for FE from MongoDb's "_id"  (done with handler functions, etc.)
+
+
 
 /////////////////
 // HANDLER FUNCTIONS
 /////////////////
-const createSingle = (doc) => {
+const createSingle = async (doc) => {
   // CREATE DOC IN DB
-  doc.id = uuidv4()
-  docs.unshift(doc)
+  let createdDoc = await usersCollection.insertOne(doc)
+  createdDoc.id = createdDoc._id
+  console.log("RETURN", createdDoc)
   // RETURN DOC
-  return doc
+  return createdDoc
 } 
-const getSingle = (id) => {
+const getSingle = async (id) => {
   // GET DOC FROM DB
-  const doc = docs.find(d => `${d.id}` === `${id}`)
+  let doc = await usersCollection.findOne({_id: ObjectId(id)})
+  doc.id = doc._id
   // RETURN DOC
   return doc
 } 
-const updateSingle = (doc) => {
+const updateSingle = async (doc) => {
   // UPDATE DOC IN DB
-  const index = docs.findIndex(d => `${d.id}` === `${doc.id}`)
-  docs[index] = doc
+  const id = doc._id
+  delete doc._id
+  delete doc.id
+  const updatedDoc = await usersCollection.updateOne({_id: ObjectId(id)}, {$set: {...doc}})
+  // {
+  //   acknowledged: true,
+  //   modifiedCount: 1,
+  //   upsertedId: null,
+  //   upsertedCount: 0,
+  //   matchedCount: 1
+  // }
+  doc._id = id
+  doc.id = id
   // RETURN DOC
   return doc
 } 
-const deleteSingle = (id) => {
+const deleteSingle = async (id) => {
   // DELETE DOC FROM DB
-  docs = docs.filter(d => `${d.id}` !== `${id}`)
+  const result = await usersCollection.deleteOne({_id: ObjectId(id)})
+  // { acknowledged: true, deletedCount: 1 }
   // RETURN DOC
-  return true
+  return result.acknowledged
 } 
 
 
@@ -71,7 +97,9 @@ router.delete('/:id', async (req, res) => {
 /////////////////
 
 // READ (ALL)
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  let docs = await usersCollection.find().toArray()
+  docs = docs.map(doc => ({...doc, id: doc._id}))
   res.send(docs);
 });
 

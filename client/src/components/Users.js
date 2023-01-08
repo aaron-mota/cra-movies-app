@@ -18,6 +18,7 @@ export function Users() {
       setIsFetching(true)
       try {
         const docs = await getDocs(controller, true)
+
         setDocs(docs)
       } catch(e) {
         console.log("There was a problem or the request was cancelled.", e)

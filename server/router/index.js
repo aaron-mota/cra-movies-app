@@ -2,10 +2,17 @@ const router = require("express").Router()
 const api = require("./api")
 
 // API
+//////////////
 router.use('/api', api)
 
 // NON-API
-router.use('/docs', require("./docs"))
+//////////////
+
+// LOCAL "MOCK DB"
+// router.use('/docs', require("./mock/docs"))
+
+// MONGODB
+router.use('/docs', require("./mongodb/docs"))
 
 
 

@@ -5,5 +5,5 @@ export {
   deleteDoc,
 
   getDocs,
-} from "./fetch"
-// } from "./axios"
+// } from "./fetch"
+} from "./axios"
