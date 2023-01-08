@@ -27,6 +27,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
       - Prisma (wrapping MongoDb)
     
   - `#TODO`
+    - TypeScript conversions (all options, or at least Prisma options)
+  
+  - No longer attempting, currently
     - **tRPC API**
-      - tRPC / Prisma+tRPC (likely larger change)
-    - **TypeScript conversions (all options, or at least Prisma options)**
+      - tRPC / Prisma+tRPC (too big of an architecture change and too unfamiliar with tRPC... consider again in the future)
