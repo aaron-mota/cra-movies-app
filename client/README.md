@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# CRUD App (CRA)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Project Goals
 
-In the project directory, you can run:
+- Gain experience using create-react-app (CRA)
+- Gain experience in setting up front end (client) & back end (server) "from scratch"
+- Play around with project architecture (e.g. folders, index.js files, etc.) to improve personal "best practices"
+- Gain experience with Fetch API (previously only used axios)
 
-### `npm start`
+## End Goal
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Have improved "best practices" for project architecture + have created any related snippets (for future efficiency)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Minimal-To-No Concern Given To
 
-### `npm test`
+- UI/UX
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How To
 
-### `npm run build`
+- To swap HTTP Clients, uncomment desired client within `/services/index.js`
+  - Currently available:
+    - Axios API
+    - Fetch API
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- To swap backends (databases and "routing/database handlers"), uncomment desired backend within `/server/router/index.js`
+  - Currently available:
+    - **REST API**
+      - Mock database (local JSON file)
+      - MongoDb
+      - Prisma (wrapping MongoDb)
+    
+  - `#TODO`
+    - TypeScript conversions (all options, or at least Prisma options)
+  
+  - No longer attempting, currently
+    - **tRPC API**
+      - tRPC / Prisma+tRPC (too big of an architecture change and too unfamiliar with tRPC... consider again in the future)
