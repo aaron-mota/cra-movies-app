@@ -19,6 +19,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## How To
 
+- To swap HTTP Clients, uncomment desired client within `/services/index.js`
+  - Currently available:
+    - Axios API
+    - Fetch API
+
 - To swap backends (databases and "routing/database handlers"), uncomment desired backend within `/server/router/index.js`
   - Currently available:
     - **REST API**
