@@ -8,6 +8,30 @@
 ////////////////////////
 
 
+{/* HYGEN PLAN */}
+// https://www.hygen.io/
+//
+// (Notes:  mongodb-related ("collection"))
+// - Determine collection name (string)
+// -   
+// - FE
+//     - Create pages folder
+//         - _template
+// - BE
+//     - Router
+//         - Create Prisma route file
+//             - _template (collection = imported)
+//         - Add line to routers/index.js file ?
+//             - router.use(‘/collection’, require(“.prisma/collection”))
+//             -  
+//             - **alternative:  enum / add additional imports at top
+//     - Prisma.schema
+//         - Add model ?
+
+
+
+
+
 
 {/* CRA */}
 // npx create-react-app my-app
