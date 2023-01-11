@@ -6,8 +6,10 @@ import { colors } from "../../utils/constants";
 import { getDoc, deleteDoc } from '../../services';
 import LinkWrapped from '../../components/utils/LinkWrapped';
 import ModalUpdate from './components/ModalUpdate';
+import { makeSingular } from '../../utils/makeSingular';
+import { collection } from './Docs';
 
-export default function User() {
+export default function Doc() {
   const navigate = useNavigate()
   const params = useParams()
   const id = params.id
@@ -26,7 +28,7 @@ export default function User() {
     async function getSingle() {
       setIsFetching(true)
       try {
-        const doc = await getDoc(id, "docs", controller, true)
+        const doc = await getDoc(id, collection, controller, true)
         setDoc(doc)
       } catch(e) {
         console.log("There was a problem or the request was cancelled.", e)
@@ -53,7 +55,7 @@ export default function User() {
       async function deleteSingle() {
         setIsDeleting(true)
         try {
-          const success = await deleteDoc(doc.id, "docs", controller, true)
+          const success = await deleteDoc(doc.id, collection, controller, true)
           if (success) {
             navigate(-1)
           } else {
@@ -83,26 +85,24 @@ export default function User() {
         </Button>
       </div>
 
-      {(!isFetching && !doc?.first_name) ? "User not found.  Please try again." : 
+      {(!isFetching && !doc?.first_name) ? `${makeSingular(collection)} not found.  Please try again.` : 
         <>
           <Stack direction="row" gap={2} alignItems="center" sx={{mb: 2}}>
-            <Typography variant="h4" component="h1">{doc.first_name} {doc.last_name}</Typography>
+            <Typography variant="h4" component="h1">{doc.id}</Typography>
+
             <Stack direction="row" gap={2}>
               <Button variant="contained" onClick={() => setUpdateModalOpen(true)}>Edit</Button>
               <Button variant="contained" onClick={handleDelete}>Delete</Button>
             </Stack>
           </Stack>
 
-          <Stack
-            sx={{
-              backgroundColor: doc.gender === "Female" ? colors.pink : colors.blue,
-              borderRadius: 4,
-              px: 2,
-              py: 2
-            }}
-          >
-            <Typography>{doc.first_name} {doc.last_name}</Typography>
-            <Typography>{doc.email}</Typography>
+          <Stack>
+            {doc?.entries().map(([key, value]) => 
+              <Stack direction="row" gap={2}>
+                <Typography>{key.toString()}</Typography>
+                <Typography>{value?.toString()}</Typography>
+              </Stack>
+            )}
           </Stack>
         </>
       }

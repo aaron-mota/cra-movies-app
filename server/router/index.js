@@ -17,6 +17,7 @@ router.use('/api', api)
 
 // PRISMA
 router.use('/docs', require("./prisma/docs"))
+// router.use('/users', require("./prisma/users"))
 
 
 

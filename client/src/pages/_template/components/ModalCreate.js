@@ -1,17 +1,16 @@
-import { Button, Card, CardActions, CardContent, MenuItem, Modal, Select, Stack, TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+import { Button, Card, CardActions, CardContent, MenuItem, Modal, Select, Stack, TextField } from '@mui/material'
 import { createDoc } from '../../../services';
+import { collection } from '../Docs';
 
-export default function ModalCreateUser({
+export default function ModalCreate({
   open,
   setOpen,
 }) {
 
   const initialDoc = {
-    first_name: "",
-    last_name: "",
-    email: "",
-    gender: "Male"
+    id: "",
+    // add other fields here
   }
   const [updatedDoc, setUpdatedDoc] = useState({...initialDoc})
   const [isCreating, setIsCreating] = useState(false)
@@ -41,10 +40,9 @@ export default function ModalCreateUser({
       const controller = new AbortController()
       async function createSingle() {
         setIsCreating(true)
-        console.log("GOT HERE")
         console.log(updatedDoc)
         try {
-          const doc = await createDoc(updatedDoc, controller, true)
+          const doc = await createDoc(updatedDoc, collection, controller, true)
           setOpen(false)
         } catch(e) {
           console.log("There was a problem or the request was cancelled.", e)
@@ -85,33 +83,23 @@ export default function ModalCreateUser({
             gap={2}
             onKeyDown={(e) => keyPress(e)}
           >
-            <TextField
-              autoFocus
-              fullWidth
-              label="First Name"
-              value={updatedDoc.first_name}
-              onChange={(e) => {setUpdatedDoc({...updatedDoc, first_name: e.target.value})}}
-            />
-            <TextField
-              fullWidth
-              label="Last Name"
-              value={updatedDoc.last_name}
-              onChange={(e) => {setUpdatedDoc({...updatedDoc, last_name: e.target.value})}}
-            />
-            <TextField
-              fullWidth
-              label="Email"
-              value={updatedDoc.email}
-              onChange={(e) => {setUpdatedDoc({...updatedDoc, email: e.target.value})}}
-            />
-            <Select
-              value={updatedDoc.gender}
-              label="Gender"
-              onChange={(e) => {setUpdatedDoc({...updatedDoc, gender: e.target.value})}}
+            {updatedDoc.keys().map((key, i) => 
+              <TextField
+                autoFocus={i === 0 ? true : false}
+                fullWidth
+                label={key}
+                value={updatedDoc[key]}
+                onChange={(e) => {setUpdatedDoc({...updatedDoc, [key]: e.target.value})}}
+              />
+            )}
+            {/* <Select
+              label="SelectField"
+              // value={updatedDoc[key]}
+              // onChange={(e) => {setUpdatedDoc({...updatedDoc,[key]: e.target.value})}}
             >
-              <MenuItem value={"Male"}>Male</MenuItem>
-              <MenuItem value={"Female"}>Female</MenuItem>
-            </Select>
+              <MenuItem value={"Option1"}>Option1</MenuItem>
+              <MenuItem value={"Option2"}>Option2</MenuItem>
+            </Select> */}
           </Stack>
         </CardContent>
         <CardActions>

@@ -21,8 +21,8 @@ const handleResponseType = async (response) => {
 
 
 // CREATE
-export const createDoc = async (doc, collection, controller, consoleLog = false) => {
-  let response = await fetch(`/${collection}`, {
+export const createDoc = async (doc, controller, consoleLog = false) => {
+  let response = await fetch(`/docs`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -33,24 +33,24 @@ export const createDoc = async (doc, collection, controller, consoleLog = false)
   })
   response = await handleResponseType(response)
   if (consoleLog) {
-    console.log(`createDoc (${collection}): `, response)
+    console.log("createDoc (doc): ", response)
   }
   return response
 }
 
 // READ
-export const getDoc = async (id, collection, controller, consoleLog = false) => {
-  let response = await fetch(`/${collection}/${id}`, {signal: controller.signal})
+export const getDoc = async (id, controller, consoleLog = false) => {
+  let response = await fetch(`/docs/${id}`, {signal: controller.signal})
   response = await handleResponseType(response)
   if (consoleLog) {
-    console.log(`getDoc (${collection}): `, response)
+    console.log("getDoc (doc): ", response)
   }
   return response
 }
 
 // UPDATE
-export const updateDoc = async (doc, collection, controller, consoleLog = false) => {
-  let response = await fetch(`/${collection}/${doc.id}`, {
+export const updateDoc = async (doc, controller, consoleLog = false) => {
+  let response = await fetch(`/docs/${doc.id}`, {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
@@ -61,17 +61,17 @@ export const updateDoc = async (doc, collection, controller, consoleLog = false)
   })
   response = await handleResponseType(response)
   if (consoleLog) {
-    console.log(`updateDoc (${collection}): `, response)
+    console.log("updateDoc (doc): ", response)
   }
   return response
 }
 
 // DELETE
-export const deleteDoc = async (id, collection, controller, consoleLog = false) => {
-  let response = await fetch(`/${collection}/${id}`, {method: 'DELETE', signal: controller.signal})
+export const deleteDoc = async (id, controller, consoleLog = false) => {
+  let response = await fetch(`/docs/${id}`, {method: 'DELETE', signal: controller.signal})
   response = Boolean(await handleResponseType(response))
   if (consoleLog) {
-    console.log(`deleteDoc (${collection}): `, typeof response, response)
+    console.log("deleteDoc (doc): ", typeof response, response)
   }
   return response
 }
@@ -81,11 +81,11 @@ export const deleteDoc = async (id, collection, controller, consoleLog = false) 
 ///////////////////
 
 // GET MANY
-export const getDocs = async (collection, controller, consoleLog = false) => {
-  let response = await fetch(`/${collection}`, {signal: controller.signal})
+export const getDocs = async (controller, consoleLog = false) => {
+  let response = await fetch('/docs', {signal: controller.signal})
   response = await handleResponseType(response)
   if (consoleLog) {
-    console.log(`getDocs (${collection}): `, typeof response, response)
+    console.log("getDocs (docs): ", typeof response, response)
   }
   return response
 }

@@ -2,7 +2,7 @@ import { Button, Card, CardActions, CardContent, MenuItem, Modal, Select, Stack,
 import React, { useEffect, useState } from 'react'
 import { updateDoc } from '../../../services';
 
-export default function ModalUpdateUser({
+export default function ModalUpdate({
   open,
   setOpen,
   doc,
@@ -32,7 +32,7 @@ export default function ModalUpdateUser({
         console.log("GOT HERE")
         console.log(updatedDoc)
         try {
-          const doc = await updateDoc(updatedDoc, controller, true)
+          const doc = await updateDoc(updatedDoc, "docs", controller, true)
           setDoc(doc)
           setOpen(false)
         } catch(e) {

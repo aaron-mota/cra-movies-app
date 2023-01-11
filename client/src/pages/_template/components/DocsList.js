@@ -2,8 +2,8 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { getDocs } from "../../../services";
 import { Skeleton, Stack, Typography } from "@mui/material";
-import { colors } from "../../../utils/constants";
-import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { collection } from '../Docs';
 
 export function UsersList() {
   const navigate = useNavigate()
@@ -17,8 +17,7 @@ export function UsersList() {
     async function fetchDocs() {
       setIsFetching(true)
       try {
-        const docs = await getDocs("docs", controller, true)
-
+        const docs = await getDocs(collection, controller, true)
         setDocs(docs)
       } catch(e) {
         console.log("There was a problem or the request was cancelled.", e)
@@ -36,13 +35,12 @@ export function UsersList() {
   return (
     isFetching ? <Skeleton width={210} height={118} /> : 
       <Stack gap={1}>
-        {docs.map(({id, first_name, last_name, email, gender, ...rest}) => 
+        {docs.map(doc => 
           <Stack
-            key={id}
-            onClick={() => navigate(`/users/${id}`)}
+            key={doc.id}
+            onClick={() => navigate(`/${collection}/${doc.id}`)}
             sx={{
-              backgroundColor: gender == "Female" ? colors.pink : colors.blue,
-              borderRadius: 4,
+              backgroundColor: "#00000010",
               px: 2,
               py: 2,
               '&:hover': {
@@ -50,8 +48,12 @@ export function UsersList() {
               }
             }}
           >
-            <Typography>{first_name} {last_name}</Typography>
-            <Typography>{email}</Typography>
+            {doc.entries().map(([key, value]) => 
+              <Stack direction="row" gap={2}>
+                <Typography>{key.toString()}</Typography>
+                <Typography>{value?.toString()}</Typography>
+              </Stack>
+            )}
           </Stack>
         )}
       </Stack>

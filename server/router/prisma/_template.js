@@ -3,15 +3,14 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient
 const router = require("express").Router()
 
-const collection = "user"
-
+const collection = "collection"
 
 
 /////////////////
 // NOTES
 /////////////////
 
-// using "id" for FE rendering, but prisma.schema is mapping MongoDb's "_id" to "id", so no extra steps necessary!
+// using "id" for FE rendering, so need to create it for FE from MongoDb's "_id"  (done with handler functions, etc.)
 
 
 

@@ -1,12 +1,12 @@
-import { Button, Stack, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import { UsersList } from './components/UsersList'
+import { Button, Stack, Typography } from '@mui/material'
+import { UsersList } from './components/DocsList'
 import ModalCreate from './components/ModalCreate'
 import { makeSingular } from '../../utils/makeSingular'
 
-export const collection = "users"
+export const collection = "docs" //TODO:  consider separate folder/file containing all collections (importing/exporting from there vs "Docs" file)
 
-export default function Users() {
+export default function Docs() {
   const [createModalOpen, setCreateModalOpen] = useState(false)
 
   return (
