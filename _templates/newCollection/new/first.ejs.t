@@ -1,12 +1,17 @@
+---
+to: client/src/pages/<%= Name =%>.js
+unless_exists: true
+---
+
 import React, { useState } from 'react'
 import { Button, Stack, Typography } from '@mui/material'
 import { DocsList } from './components/DocsList'
 import ModalCreate from './components/ModalCreate'
 import { makeSingular } from '../../utils/makeSingular'
 
-export const collection = "docs" //TODO:  consider separate folder/file containing all collections (importing/exporting from there vs "Docs" file)
+export const collection = "<%= name =%>"
 
-export default function Docs() {
+export default function <%= Name =%>() {
   const [createModalOpen, setCreateModalOpen] = useState(false)
 
   return (

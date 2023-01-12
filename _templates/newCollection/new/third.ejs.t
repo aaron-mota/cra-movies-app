@@ -1,9 +1,14 @@
+---
+to: client/src/pages/components/DocsList.js
+unless_exists: true
+---
+
 import React from 'react'
 import { useEffect, useState } from "react";
 import { getDocs } from "../../../services";
 import { Skeleton, Stack, Typography } from "@mui/material";
 import { useNavigate } from 'react-router-dom'
-import { collection } from '../Docs';
+import { collection } from '../<=% Name =%>';
 
 export function DocsList() {
   const navigate = useNavigate()

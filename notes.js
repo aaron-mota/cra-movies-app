@@ -11,12 +11,17 @@
 {/* HYGEN PLAN */}
 // https://www.hygen.io/
 //
-// (Notes:  mongodb-related ("collection"))
+// Notes:
+    // mongodb-related ("collection")
+    // currently stuck at FE (newCollection/first.ejs.t) (SyntaxError: Unexpected token ')' while compiling ejs)
+//
 // - Determine collection name (string)
 // -   
 // - FE
 //     - Create pages folder
 //         - _template
+//     
+//
 // - BE
 //     - Router
 //         - Create Prisma route file
