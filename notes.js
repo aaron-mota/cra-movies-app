@@ -4,6 +4,9 @@
 {/* TODO:  PAGES */}
 
 
+// Airbnb Style Guide / Conventions
+// https://github.com/airbnb/javascript/tree/master/react#naming
+
 
 ////////////////////////
 
