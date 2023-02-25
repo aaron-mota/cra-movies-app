@@ -26,6 +26,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     - PORT=4000
     - DATABASE_URL=mongodb+srv://username:password@clusterName.mongodb.net/databaseName?retryWrites=true&w=majority (mongodb example)
     - JWTSECRET=enterJWTSecretHere
+- (Prisma) Re-establish link between schema.prisma & .env file
+  - npx prisma generate
 
 ## How To
 
