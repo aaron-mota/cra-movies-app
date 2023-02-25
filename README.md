@@ -17,6 +17,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - UI/UX
 
+## Getting Started:
+
+- Create .env files (client, server)
+  - Client
+    - BACKENDURL = http://localhost:4000
+  - Server
+    - PORT=4000
+    - DATABASE_URL=mongodb+srv://username:password@clusterName.mongodb.net/databaseName?retryWrites=true&w=majority (mongodb example)
+    - JWTSECRET=enterJWTSecretHere
+
 ## How To
 
 - To swap HTTP Clients, uncomment desired client within `/services/index.js`

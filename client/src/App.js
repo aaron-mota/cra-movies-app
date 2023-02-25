@@ -9,6 +9,19 @@ import User from "./pages/users/User";
 axios.defaults.baseURL = process.env.BACKENDURL || "http://localhost:4000"
 
 
+// (APP) STATE MANAGEMENT
+// App.js
+{/* <StateContext.Provider value={state}>
+<DispatchContext.Provider value={dispatch}>
+ <BrowserRouter>
+   <Routes>
+    <Route path="/" element={<Component />} />
+   </Routes>
+ </BrowserRouter>
+</DispatchContext.Provider>
+</StateContext.Provider> */}
+
+
 
 function App() {
   return (
